@@ -29,11 +29,11 @@ class Config:
     # --- Database ---
     DATABASE_URL: str = os.getenv("DATABASE_URL", "sqlite+aiosqlite:///./local.db")
 
-    # --- AI (standart: Gemini, OpenAI-mos endpoint orqali) ---
+    # --- AI (standart: Groq, OpenAI-mos endpoint orqali, bepul) ---
     GROK_API_KEY: str = os.getenv("GROK_API_KEY", "")
-    GROK_MODEL: str = os.getenv("GROK_MODEL", "gemini-2.5-flash")
+    GROK_MODEL: str = os.getenv("GROK_MODEL", "llama-3.3-70b-versatile")
     GROK_API_URL: str = os.getenv(
-        "GROK_API_URL", "https://generativelanguage.googleapis.com/v1beta/openai/chat/completions"
+        "GROK_API_URL", "https://api.groq.com/openai/v1/chat/completions"
     )
 
     # --- Defaults for gate settings (overridable later from DB via /guruh /kanal /bal) ---
