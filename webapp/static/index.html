@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>Arenda E'lonlari</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/app/style.css" />
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
+</head>
+<body>
+  <div id="app">
+
+    <!-- HEADER -->
+    <header class="topbar">
+      <button id="backBtn" class="icon-btn" aria-label="Orqaga" hidden>&larr;</button>
+      <div class="brand">
+        <span class="brand-mark">⌘</span>
+        <div class="brand-text">
+          <h1 id="pageTitle">Hududni tanlang</h1>
+          <p id="pageSubtitle">Arenda uy-joy e'lonlari</p>
+        </div>
+      </div>
+      <button id="addBtn" class="icon-btn accent" aria-label="Qo'shish" hidden>+</button>
+    </header>
+
+    <!-- REGIONS VIEW -->
+    <section id="regionsView" class="view">
+      <div id="regionsGrid" class="regions-grid"></div>
+    </section>
+
+    <!-- LISTINGS VIEW -->
+    <section id="listingsView" class="view" hidden>
+      <div id="listingsGrid" class="listings-grid"></div>
+      <p id="emptyState" class="empty-state" hidden>Bu hududda hozircha e'lon yo'q.</p>
+    </section>
+
+    <!-- DETAIL MODAL -->
+    <div id="detailModal" class="modal" hidden>
+      <div class="modal-sheet">
+        <button class="modal-close" data-close>&times;</button>
+        <div id="detailPhoto" class="detail-photo"></div>
+        <div class="detail-body">
+          <span id="detailStatus" class="status-seal"></span>
+          <h2 id="detailTitle"></h2>
+          <p id="detailAddress" class="muted"></p>
+          <p id="detailPrice" class="price"></p>
+          <p id="detailDescription"></p>
+          <div id="adminActions" class="admin-actions" hidden>
+            <button id="editListingBtn" class="btn btn-outline">Tahrirlash</button>
+            <button id="deleteListingBtn" class="btn btn-danger">O'chirish</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FORM MODAL (admin) -->
+    <div id="formModal" class="modal" hidden>
+      <div class="modal-sheet">
+        <button class="modal-close" data-close>&times;</button>
+        <h2 id="formTitle">Yangi e'lon</h2>
+        <form id="listingForm">
+          <label>Hudud
+            <select id="fRegion" required></select>
+          </label>
+          <label>Sarlavha
+            <input id="fTitle" type="text" required placeholder="Masalan: 2 xonali kvartira, markazda" />
+          </label>
+          <label>Manzil
+            <input id="fAddress" type="text" placeholder="Ko'cha, mo'ljal" />
+          </label>
+          <label>Narxi (so'm)
+            <input id="fPrice" type="number" min="0" step="1000" required />
+          </label>
+          <label>Holati
+            <select id="fStatus">
+              <option value="bosh">🟢 Bo'sh</option>
+              <option value="band">🔴 Band (ijaraga berilgan)</option>
+            </select>
+          </label>
+          <label>Tavsif
+            <textarea id="fDescription" rows="3" placeholder="Qo'shimcha ma'lumot"></textarea>
+          </label>
+          <label>Rasm
+            <input id="fPhoto" type="file" accept="image/*" />
+          </label>
+          <img id="fPhotoPreview" class="photo-preview" hidden />
+          <button type="submit" class="btn btn-primary btn-block">Saqlash</button>
+        </form>
+      </div>
+    </div>
+
+  </div>
+  <script src="/app/app.js"></script>
+</body>
+</html>
